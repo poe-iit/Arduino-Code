@@ -1,7 +1,7 @@
 #include <Wire.h>
 #include <Adafruit_MCP3008.h>
 
-#define SLAVE_ADDRESS 0x0f
+#define SLAVE_ADDRESS 0x11
 byte receivedData = 0;
 byte response[15]; //this is the byte array we will send to the Pi over I2C
 Adafruit_MCP3008 adc; 
