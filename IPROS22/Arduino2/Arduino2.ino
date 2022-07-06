@@ -110,3 +110,9 @@ void sendData(){
   
   Wire.write(response,15);  
 }
+void siren(int pin){
+  for(int i=500;i<750;i++){
+  tone(9,i);
+  delay(7);
+  }
+}

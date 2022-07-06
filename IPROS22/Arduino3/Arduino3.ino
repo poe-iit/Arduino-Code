@@ -72,6 +72,8 @@ void loop() {
   temp4 = map(adc.readADC(3),0,1023,0,255);
   motion1 = digitalRead(m1);
   motion2 = digitalRead(m2);
+
+  
 }
 
 void receiveData(int bytecount){
@@ -96,4 +98,10 @@ void sendData(){
   response[12] = (byte)motion1;
   response[13] = (byte)motion2;
   Wire.write(response,15);  
+}
+void siren(int pin){
+  for(int i=500;i<750;i++){
+  tone(9,i);
+  delay(7);
+  }
 }

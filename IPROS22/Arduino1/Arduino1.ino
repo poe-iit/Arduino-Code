@@ -97,3 +97,17 @@ void sendData(){
   response[13] = (byte)motion2;
   Wire.write(response,15);  
 }
+
+void siren(int pin){
+  for(int i=500;i<750;i++){
+  tone(9,i);
+  delay(7);
+  }
+}
+float readingToTemp(int reading){
+  float voltage = reading*5.0;
+  voltage /= 1024.0;
+  float temperatureC = (voltage - 0.5) * 100 ;
+  float temperatureF = (temperatureC * 9.0 / 5.0) + 32.0;
+  return temperatureF;
+}
