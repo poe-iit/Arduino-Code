@@ -1,11 +1,13 @@
 import sys
 import smbus2 as smbus
 import time
+import sqlite3
+import os.path
 
 I2C_SLAVE_ADDRESS1 = 0xf
-I2C_SLAVE_ADDRESS2 = 0x10
-I2C_SLAVE_ADDRESS3 = 0x11
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(BASE_DIR, "database.db")
 
 def convertStringsToBytes(src):
     converted = []
@@ -15,19 +17,18 @@ def convertStringsToBytes(src):
 
 def main(args):
     I2Cbus = smbus.SMBus(1)
+    conn = sqlite3.connect(db_path)
+    print("connected to SQLite")
     with smbus.SMBus(1) as I2Cbus:
         try:
-            data1 = I2Cbus.read_i2c_block_data(I2C_SLAVE_ADDRESS1,0x00,14)
+            data1 = I2Cbus.read_i2c_block_data(I2C_SLAVE_ADDRESS1,0x00,20)
+            #data comes in as array of bytes, in this format:
+            #[flame1,flame2,flame3,flame4,flame5,flame6,flame7,flame8,smoke1,smoke2,smoke3,smoke4,smoke5,smoke6,smoke7,smoke8,motion,humidity,temp1,temp2,water]
             print(str(data1))
-            data2 = I2Cbus.read_i2c_block_data(I2C_SLAVE_ADDRESS2,0x00,16)
-            print(str(data2))
-            data3 = I2Cbus.read_i2c_block_data(I2C_SLAVE_ADDRESS3,0x00,14)
-            print(str(data3))
             file = open("logfile.txt","w")
             file.write(data1)
-            file.write(data2)
-            file.write(data3)
             file.close()
+            conn.execute("")
         except:
             print("remove I/O error")
     return 0
