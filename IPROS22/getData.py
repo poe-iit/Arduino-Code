@@ -28,7 +28,8 @@ def main(args):
             file = open("logfile.txt","w")
             file.write(data1)
             file.close()
-            conn.execute("")
+            for x in range(1,22):
+                conn.execute("UPDATE")
         except:
             print("remove I/O error")
     return 0
