@@ -164,5 +164,5 @@ float readingToTemp(int reading){
   float voltage = reading * (3.3/1024.0);
   float temperatureC = (voltage - 0.5) * 100;
   float temperatureF = (temperatureC * 9.0 / 5.0) + 32.0;
-  return temperatureF;
+  return temperatureC;
 }
