@@ -1,5 +1,5 @@
 # 🚨 Arduino-Code
-Fall 2022 poe arduino code based off of poe-iit summer 2022 IPRO's inital works.
+Use code in ethernet directory
 
 ## 📄 Info
 ### Compatibility
