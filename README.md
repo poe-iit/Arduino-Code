@@ -5,6 +5,15 @@ Use code in ethernet directory
 ### Compatibility
 Works in conjunction with: https://github.com/poe-iit/poe-backend
 
+### Libraries
+Adafruit MCP3008
+
+Adafruit BusIO
+
+DHT Sensor Library
+
+Adafruit Unified Sensor
+
 ### Quick Setup
 
 ## ✏️ Acknowledgements
